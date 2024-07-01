@@ -238,6 +238,7 @@ torch.set_float32_matmul_precision('high') # this is a no-op on A100 which uses 
 # get logits
 model = GPT(GPTConfig())
 model.to(device)
+model = torch.compile(model)
 
 # optimize!
 optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
